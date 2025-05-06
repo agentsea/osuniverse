@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description" content="OSUniverse: Benchmark for Multimodal GUI-navigation AI Agents">
+  <meta name="keywords" content="AI Agents, GUI-navigation, Benchmark, Multimodal">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>OSUniverse: Benchmark for Multimodal GUI-navigation AI Agents</title>
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <!-- Bulma CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <!-- Academicons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  
+  <!-- Custom Styles (can be moved to a separate CSS file) -->
+  <style>
+    :root {
+      --bulma-scheme-h: 251deg; /* Example: Adjust hue for theme color */
+      --bulma-primary-h: var(--bulma-scheme-h);
+    }
+    body {
+      font-family: 'Noto Sans', sans-serif;
+    }
+    .title, .subtitle {
+      font-family: 'Google Sans', sans-serif;
+    }
+    .publication-title {
+      font-weight: bold;
+    }
+    .publication-authors {
+      margin: 1rem 0;
+    }
+    .author-block {
+      display: inline-block;
+      margin-right: 0.5rem; /* Spacing between authors */
+    }
+    .author-block sup {
+        color: #3273dc; /* Link color for affiliation marker */
+    }
+    .affiliation-block {
+        margin-top: 0.5rem;
+        font-style: italic;
+    }
+    .equal-contribution sup {
+        color: #ff3860; /* Different color for equal contribution marker */
+        font-weight: bold;
+    }
+    .equal-contribution-note {
+        margin-top: 0.5rem;
+        font-size: 0.9em;
+        color: #7a7a7a;
+    }
+    .publication-links {
+      margin-top: 1.5rem;
+    }
+    .link-block {
+      display: inline-block;
+      margin: 0.5rem;
+    }
+    .hero.is-light { /* Adjust hero background if needed */
+        background-color: #f5f5f5;
+    }
+    .section {
+        padding: 3rem 1.5rem;
+    }
+    .content h2 { /* Add spacing below section titles */
+        margin-bottom: 1.5rem;
+    }
+    .content h3 {
+        margin-top: 1.5rem;
+        margin-bottom: 1rem;
+    }
+    .responsive-image {
+        max-width: 100%;
+        height: auto;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 1rem; /* Add space below images */
+    }
+    pre {
+        background-color: #f5f5f5; /* Light grey background */
+        padding: 1em;              /* Padding around the text */
+        border-radius: 4px;        /* Slightly rounded corners */
+        white-space: pre-wrap;       /* Allows text to wrap */
+        word-wrap: break-word;       /* Breaks long words if needed */
+    }
+    code {
+        font-family: monospace; /* Sets a monospace font */
+    }
+    .footer {
+        padding: 2rem 1.5rem 3rem;
+        background-color: #fafafa;
+    }
+    .icon-link {
+        margin: 0 0.5rem;
+        font-size: 1.5rem;
+        color: #363636;
+    }
+    .icon-link:hover {
+        color: #3273dc; /* Bulma primary color */
+    }
+    /* Add styles from the example page as needed */
+    .first-rank-star { /* Example style from OSWorld page */
+      color: gold;
+      font-size: 1.2em;
+      display: inline-block;
+      animation: pulse 1.5s infinite;
+      margin-left: 5px;
+    }
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.3); }
+      100% { transform: scale(1); }
+    }
+    .table-container {
+      margin: 2rem;
+    }
+    .table td,
+    .table th {
+      vertical-align: middle;
+    }
+    .bold-score {
+      font-weight: bold;
+    }
+  </style>
+
+  <!-- Font Awesome JS (for potential dynamic icons, optional) -->
+  <script defer src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+
+</head>
+<body>
+
+  <!-- Navigation Bar (Optional) -->
+  <nav class="navbar py-2" role="navigation" aria-label="main navigation">
+    <div class="container">
+      <div class="navbar-brand">
+        <a class="navbar-item" href="https://kentauros.ai"> <!-- Link to project/lab page -->
+          <span class="icon is-medium"><i class="fas fa-flask"></i></span> <!-- Example Icon -->
+          <span class="has-text-weight-semibold ml-2">Kentauros AI</span>
+        </a>
+
+        <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+      </div>
+
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <!-- Add other nav items here if needed -->
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <div class="buttons">
+              <a class="button is-primary" href="#BibTeX">
+                <span class="icon"><i class="fa fa-book"></i></span>
+                <span>Cite</span>
+              </a>
+              <a class="button is-light" href="https://github.com/agentsea/osuniverse">
+                <span class="icon"><i class="fab fa-github"></i></span>
+                <span>Code</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero is-light"> <!-- Or is-primary, is-info, etc. -->
+    <div class="hero-body">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered">
+          <div class="column has-text-centered">
+            <h1 class="title is-1 publication-title">
+              OSUniverse: Benchmark for Multimodal GUI-navigation AI Agents
+            </h1>
+            <div class="is-size-5 publication-authors">
+              <span class="author-block equal-contribution">
+                <a href="https://www.linkedin.com/in/mariya-davydova/">Mariya Davydova</a><sup>*,1</sup>,</span>
+              <span class="author-block equal-contribution">
+                <a href="https://www.linkedin.com/in/danjeffries/">Daniel Jeffries</a><sup>*,1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/patrickbarkerco/">Patrick Barker</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/arturo-marquez-flores/">Arturo Márquez Flores</a><sup>1</sup>,</span>
+              <span class="author-block">
+                <a href="https://www.linkedin.com/in/sin%C3%A9adryan2021/">Sinéad Ryan</a><sup>1</sup></span>
+            </div>
+
+            <div class="is-size-5 publication-authors">
+              <span class="affiliation-block"><sup>1</sup>Kentauros AI Inc.</span>
+              <div class="equal-contribution-note"><sup>*</sup>Equal contribution</div>
+            </div>
+
+            <div class="column has-text-centered">
+              <div class="publication-links">
+                <!-- Arxiv Link -->
+                <span class="link-block">
+                  <a href="#" class="button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="ai ai-arxiv"></i>
+                    </span>
+                    <span>Paper</span>
+                  </a>
+                </span>
+                <!-- Code Link -->
+                <span class="link-block">
+                  <a href="https://github.com/agentsea/osuniverse" class="button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <i class="fab fa-github"></i>
+                    </span>
+                    <span>Code</span>
+                  </a>
+                </span>
+                <!-- Twitter Link. -->
+                <span class="link-block">
+                  <a href="https://x.com/kentauros_ai" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-twitter fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="twitter" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"></path></svg><!-- <i class="fab fa-twitter"></i> Font Awesome fontawesome.com -->
+                    </span>
+                    <span>Twitter</span>
+                  </a>
+                </span>
+                <!-- Discord Link. -->
+                <span class="link-block">
+                  <a href="https://discord.gg/hhaq7XYPS6" target="_blank" class="external-link button is-normal is-rounded is-dark">
+                    <span class="icon">
+                      <svg class="svg-inline--fa fa-discord fa-w-14" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="discord" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z"></path></svg><!-- <i class="fab fa-discord"></i> Font Awesome fontawesome.com -->
+                    </span>
+                    <span>Discord</span>
+                  </a>
+                </span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-9">
+          <div class="content has-text-centered">
+            <img src="combined-4-runs-osuniverse-optimized.gif" alt="OSUniverse Demo" class="rounded">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Abstract -->
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column is-full-width">
+          <h2 class="title is-3 has-text-centered">Abstract</h2>
+          <div class="content has-text-justified">
+            <p>
+              In this paper, we introduce OSUniverse: a benchmark of complex, multimodal desktop-oriented tasks for advanced GUI-navigation AI agents that focuses on ease of use, extensibility, comprehensive coverage of test cases, and automated validation. We divide the tasks in increasing levels of complexity, from basic precision clicking to multistep, multiapplication tests requiring dexterity, precision, and clear thinking from the agent. In version one of the benchmark, presented here, we have calibrated the complexity of the benchmark test cases to ensure that the SOTA (State of the Art) agents (at the time of publication) do not achieve results higher than 50%, while the average white collar worker can perform all these tasks with perfect accuracy. The benchmark can be scored manually, but we also introduce an automated validation mechanism that has an average error rate less than 2%. Therefore, this benchmark presents solid ground for fully automated measuring progress, capabilities and the effectiveness of GUI-navigation AI agents over the short and medium-term horizon.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Core Features</h2>
+      <div class="content has-text-justified">
+        <ul>
+          <li>
+            <b>Multimodality</b>: designed to rely on vision only, without any extra knowledge about the environment.
+          </li>
+          <li>
+            <b>Diversity</b>: contains 160 tasks across 5 levels of complexity and 9 categories; all tasks are carefully crafted to be challenging and representative of real-world scenarios.
+          </li>
+          <li>
+            <b>Automated validation</b>: includes a Gemini-powered validator with an average error rate less than 2%; we support 4 types of validations in each test case: validating the textual output of the agent, the final screenshot of the desktop, the agent trajectory, and the output of the arbitrary bash command after the agent has finished the task.
+          </li>
+          <li>
+            <b>Resource-efficient</b>: the Desktops are lightweight and run in Docker containers, so you can run them on your local machine.
+          </li>
+          <li>
+            <b>Extensibility</b>: each test case is a separate YAML configuration file. 
+          </li>
+          <li>
+            <b>Flexibility</b>: you can add new agents, runtimes, and validators. 
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <div class="table-container">
+        <h2 class="title is-3 has-text-centered">Agent Performance</h2>
+        <img src="./main_chart.png" alt="Agent Performance" class="responsive-image" style="max-width: 60%; border: 1px solid #dbdbdb; border-radius: 4px;">
+        <table class="table table-striped table-bordered table-hover align-middle">
+          <thead class="table-light">
+            <tr>
+              <th>Agent</th>
+              <th>Paper</th>
+              <th>Wood</th>
+              <th>Bronze</th>
+              <th>Silver</th>
+              <th>Gold</th>
+              <th>Total Score</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Computer Use Agent with <strong>computer-use-preview-2025-03-11</strong></td>
+              <td>100.00%</td>
+              <td>86.21%</td>
+              <td>75.00%</td>
+              <td>34.38%</td>
+              <td>9.09%</td>
+              <td class="bold-score">47.80%</td>
+            </tr>
+            <tr>
+              <td>Claude Computer Use with <strong>claude-3-5-sonnet-20241022</strong></td>
+              <td>100.00%</td>
+              <td>53.45%</td>
+              <td>43.75%</td>
+              <td>21.88%</td>
+              <td>0%</td>
+              <td class="bold-score">28.36%</td>
+            </tr>
+            <tr>
+              <td>AgentDesk-based ReACT with <strong>claude-3-5-sonnet-20241022</strong></td>
+              <td>90.91%</td>
+              <td>56.90%</td>
+              <td>39.58%</td>
+              <td>9.38%</td>
+              <td>0%</td>
+              <td class="bold-score">23.44%</td>
+            </tr>
+            <tr>
+              <td>QWEN-based ReACT with <strong>qwen2.5-vl-72b-instruct</strong></td>
+              <td>90.91%</td>
+              <td>46.55%</td>
+              <td>31.25%</td>
+              <td>6.25%</td>
+              <td>0%</td>
+              <td class="bold-score">18.64%</td>
+            </tr>
+            <tr>
+              <td>AgentDesk-based ReACT with <strong>gemini-2.5-pro-exp-03-25</strong></td>
+              <td>90.91%</td>
+              <td>15.52%</td>
+              <td>18.75%</td>
+              <td>3.12%</td>
+              <td>0%</td>
+              <td class="bold-score">9.59%</td>
+            </tr>
+            <tr>
+              <td>AgentDesk-based ReACT with <strong>gemini-2.0-flash-001</strong></td>
+              <td>90.91%</td>
+              <td>13.79%</td>
+              <td>14.58%</td>
+              <td>3.12%</td>
+              <td>0%</td>
+              <td class="bold-score">8.26%</td>
+            </tr>
+            <tr>
+              <td>AgentDesk-based ReACT with <strong>gpt-4o-2024-11-20</strong></td>
+              <td>100.00%</td>
+              <td>6.90%</td>
+              <td>12.50%</td>
+              <td>3.12%</td>
+              <td>0%</td>
+              <td class="bold-score">6.79%</td>
+            </tr>
+            <tr>
+              <td>AgentDesk-based ReACT with <strong>gemini-1.5-pro-002</strong></td>
+              <td>90.91%</td>
+              <td>3.45%</td>
+              <td>12.50%</td>
+              <td>3.12%</td>
+              <td>0%</td>
+              <td class="bold-score">6.12%</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>    
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container is-max-desktop">
+      <h2 class="title is-3 has-text-centered">Observations and Insights</h2>
+        <ul class="list-group list-group-flush">
+          <img src="./cost_chart.png" alt="Agent Performance" class="responsive-image" style="max-width: 60%; border: 1px solid #dbdbdb; border-radius: 4px;">
+          <li class="list-group-item">
+            <strong>Computer Use Preview</strong> from OpenAI is undoubtedly a very spectacular model with a lot of potential for GUI navigation. At the same time, it shows the highest instability in the results among the top four agents.
+          </li>
+          <li class="list-group-item">
+            At the same time, <strong>Computer Use Preview</strong> is the most expensive and slow model due to reasoning capabilities that are part of its decision-making. Speed in real-world scenarios is a major factor for a strong GUI-navigation agent and may be taken into account in future versions of the benchmark.
+          </li>
+          <li class="list-group-item">
+            All the top models (<strong>Computer Use Preview</strong>, <strong>Claude Computer Use</strong>, and <strong>QWEN 2.5 VL 72B</strong>) are specifically trained for GUI navigation, and each of those models have their own action space. That is why we implemented specialized agents for each of these models.
+          </li>
+          <li class="list-group-item">
+            <strong>QWEN 2.5 VL 72B</strong> is the only open-weight model on the list. This points to a problem where open source and open weights models have focused almost exclusively on text, and multimodal models are only beginning to take focus in the open-source and open-weights space. There is a distinct lack of GUI-navigation-oriented multimodal models on the market today.
+          </li>
+          <li class="list-group-item">
+            There is a large potential to fine-tune open source and open weight models that is lacking in proprietary models, which offers the tantalizing prospect of significantly enhancing performance on GUI reasoning and navigation tasks. Many proprietary models (such as Claude and OpenAI o1–o4) cannot be fine-tuned at all. We expect open models to gain an advantage due to this.
+          </li>
+        </ul>
+      </div>      
+    </div>
+  </section>
+
+  <!-- BibTeX -->
+  <section class="section" id="BibTeX">
+    <div class="container is-max-desktop content">
+      <h2 class="title is-3 has-text-centered">BibTeX</h2>
+      <pre><code>TBA</code></pre>
+    </div>
+  </section>
+
+  <!-- Simple JS for Navbar Burger on mobile -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Get all "navbar-burger" elements
+      const $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll('.navbar-burger'), 0);
+      // Check if there are any navbar burgers
+      if ($navbarBurgers.length > 0) {
+        // Add a click event on each of them
+        $navbarBurgers.forEach( el => {
+          el.addEventListener('click', () => {
+            // Get the target from the "data-target" attribute
+            const target = el.dataset.target;
+            const $target = document.getElementById(target);
+            // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
+            el.classList.toggle('is-active');
+            $target.classList.toggle('is-active');
+          });
+        });
+      }
+    });
+  </script>
+
+</body>
+</html> 

@@ -1,0 +1,8 @@
+.env
+.DS_Store
+testcases/
+agents/
+osuniverse/
+.data/
+results/
+.ruff_cache/

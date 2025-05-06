@@ -1,0 +1,8 @@
+name: "Little Alchemy 2 - Lava"
+level: "silver"
+task: "Go to https://littlealchemy2.com/ and start a new game. The rules are simple: you can drag elements from the panel on the right on each other. For example, if you first drag Air to the center of the screen, then drag Earth to the center of the screen, you will get Dust. New elements appear in the panel on the right as you discover them. Do a tutorial to unlock the ability to drag any elements. Try making Lava from Fire and Earth. As soon as you see the screen that shows the result and says 'lava', stop the game. Leave the game open on the screen as a proof."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a Little Alchemy 2 game open on the screen with Lava created: there is a 'lava' word somewhere on the screen. If the word is not visible, the test failed."

@@ -1,0 +1,8 @@
+name: "Gym - Room 7"
+level: "bronze"
+task: "You see the page with a hidden code word. To reveal it, fill in three dates: 1. Original Date (September 27, 2024). 2. Ideation Date (May 5, 2024). 3. Release Date (October 12, 2024). Then submit the form. Return the code word as soon as it is revealed."
+setup_cmd: "setsid firefox --new-window https://agentsea.github.io/gym/#/room7 >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The code word is Chameleon. It is acceptable to return the word only (Chameleon), without any additional information; it is also acceptable to share additional information, as long as the code word is returned and correct."

@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Read Paragraph"
+level: "paper"
+task: "You see the LibreOffice Writer open on the screen. Read the first paragraph in the section 'Introduction' and return it."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odt && setsid libreoffice --nologo demo_01.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: returned_result
+  value: "The agent should return the first paragraph in the section 'Introduction', which is 'This document introduces OSUniverse. OSUniverse is a benchmark designed for testing the capabilities of GUI-navigating AI Agents on a variety of tasks across web and desktop applications.'"

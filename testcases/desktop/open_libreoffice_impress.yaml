@@ -1,0 +1,8 @@
+name: "Desktop - Open LibreOffice Impress"
+level: "wood"
+task: "Open LibreOffice Impress. You can find it in the 'Office' section of the Applications menu."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a LibreOffice Impress window open on the screen."

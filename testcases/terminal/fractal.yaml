@@ -1,0 +1,11 @@
+name: "Terminal - Fractal"
+level: "silver"
+task: "Open terminal. Install imagemagick. Create a fractal image with a resolution of 1200x800 pixels. Save it as 'fractal.png' on Desktop. Open it with image viewer and leave it open. Use Google if you don't know how to do it."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && ls"
+  value: "fractal.png should be present in the Desktop directory."
+- type: final_screenshot
+  value: "The image with a fractal should be displayed in the image viewer."

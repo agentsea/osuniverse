@@ -1,0 +1,8 @@
+name: "Gym - Room 6"
+level: "bronze"
+task: "You see the page with a hidden code word. To reveal it, fill in a form with your preffered location (Paris, France) and the dates for check-in (September 20, 2024) and check-out (September 29, 2024). Make sure that the 'Pet-friendly' checkbox is checked. Return the code word as soon as it is revealed."
+setup_cmd: "setsid firefox --new-window https://agentsea.github.io/gym/#/room6 >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The code word is Chameleon. It is acceptable to return the word only (Chameleon), without any additional information; it is also acceptable to share additional information, as long as the code word is returned and correct."

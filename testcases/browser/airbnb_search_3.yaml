@@ -1,0 +1,12 @@
+name: "Browser - Airbnb Search 3"
+level: "bronze"
+task: "Go to https://www.airbnb.com and search for places in Lisbon, Portugal with a check-in date set for [%MONTH+1%] 15th, and the check-out date set for [%MONTH+1%] 22nd. Filter the results by 'Entire Home,' '1 bedroom,' and 'Guest Favorites.' Return the name of the first listing as a result."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The name of the first listing visible on the screenshot is returned."
+  - type: final_screenshot
+    value: "The Airbnb page shows a list of listings in Lisbon, Portugal from [%MONTH+1%] 15th to [%MONTH+1%] 22nd. The dates are clearly visible on the top of the screen. Also, it is visible that exactly 3 filters are applied (a number is visible near the button 'Filters')."
+  - type: expected_flow
+    value: "In addition to the location and dates, the agent should apply the filters 'Entire Home,' '1 bedroom,' and 'Guest Favorites.' At the end of the flow, the pop up with filters should be closed. If the agent applies less than three filters, score 0."

@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Combine Two Documents"
+level: "gold"
+task: "There are two documents called 'demo_02.odt' and 'demo_03.odt' on the Desktop. Open them both. Add the table from the 'demo_02.odt' to a new section at the end of 'demo_03.odt', in a section called 'Comparison to Other Flowers'. Save it as 'demo_combined.odt' on Desktop."
+setup_cmd: "sudo apk add libreoffice pandoc && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_02.odt && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_03.odt"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_combined.odt && pandoc -f html -t markdown --wrap none demo_combined.html -o demo_combined.md && libreoffice --headless --convert-to html demo_03.odt && pandoc -f html -t markdown --wrap none demo_03.html -o demo_03.md && diff demo_03.md demo_combined.md"
+  value: "This is the diff between the markdown represenations of the original file and the edited file. The diff should contain the following: the 'Comparison to Other Flowers' section with the table that contains information about rose, sakura, sunflower, and tulip, related to colors, bloom season, and symbolism. It may also contain extra lines and page breaks. The change should be located at the end of the document, starting around the line 33 (the number may be slightly different, between 32 and 34)."

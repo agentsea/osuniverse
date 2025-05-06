@@ -1,0 +1,10 @@
+name: "Browser - Finland Population"
+level: "paper"
+task: "Please look at the Wikipedia page which is currently open in the browser and tell me the population of Finland. DO NOT scroll down the page."
+setup_cmd: "setsid firefox --new-window https://en.wikipedia.org/wiki/Finland >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The population of Finland is 5.6 million."
+  - type: final_screenshot
+    value: "The information about population of Finland is visible on the screen." 

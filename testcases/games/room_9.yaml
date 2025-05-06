@@ -1,0 +1,8 @@
+name: "Gym - Room 9"
+level: "bronze"
+task: "You see the page with a hidden code word. To reveal it, you need to work with a product catalog table. Filter the table to show only 'Electronics' products (type the exact word 'Electronics'), then sort them by price in descending order (highest first). After doing that, click the 'Check Results' button. Return the code word as soon as it is revealed."
+setup_cmd: "setsid firefox --new-window https://agentsea.github.io/gym/#/room9 >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The code word is Chameleon. It is acceptable to return the word only (Chameleon), without any additional information; it is also acceptable to share additional information, as long as the code word is returned and correct."

@@ -1,0 +1,11 @@
+name: "GIMP - New Image with Figures"
+level: "gold"
+task: "Open GIMP. You can find it in the 'Graphics' section of the Applications menu. Create a new file. Draw a Circle, a Trangle and a Square in different colors. Save it as 'figures.xcf' on the Desktop. Export it as 'figures.png' on the Desktop."
+setup_cmd: "sudo apk add gimp"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "ls -l /config/Desktop"
+    value: "This is the output of the LS command. It should contain 'figures.xcf' and 'figures.png' in the list of files."
+  - type: final_screenshot
+    value: "There is a GIMP window open on the screen. The image contains a Circle, a Trangle and a Square in different colors."

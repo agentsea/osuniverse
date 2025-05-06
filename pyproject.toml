@@ -1,0 +1,26 @@
+[tool.poetry]
+name = "osuniverse"
+version = "0.1.0"
+description = "Task-oriented OS-based benchmark for vision-based GUI-nav agents"
+authors = ["Kentauros AI <partnerships@kentauros.ai>"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+surfkit = "0.1.396"
+taskara = "0.1.228"
+agentdesk = "0.2.120"
+litellm = "^1.57.5"
+python-dotenv = "^1.0.1"
+json-repair = "^0.35.0"
+streamlit = "^1.41.1"
+google-generativeai = "^0.8.4"
+
+[tool.poetry.group.dev.dependencies]
+ruff = "^0.9.0"
+pylance = "^0.21.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

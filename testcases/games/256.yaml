@@ -1,0 +1,8 @@
+name: "2048 - 256"
+level: "gold"
+task: "Go to https://play2048.co/ and start a new 2048 game. The rules are very simple: you can use Up, Down, Left and Right keys on the keyboard to move ALL the tiles in the corresponding direction. When two tiles with the same number collide, they merge into one, with a value equal to the sum of the two tiles: two 2s become 4, two 4s become 8, etc. Your goal is to get to the tile with number 256. As soon as you get it, stop the game. If the game ended before you got this tile, restart it. Leave the game open on the screen as a proof."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a 2048 game open on the screen with at least one tile with number 256 displayed."

@@ -1,0 +1,10 @@
+name: "Multiapp - Summarize Reddit Post"
+level: "silver"
+task: "Open browser and visit https://www.reddit.com. Search for 'How to create a bootable USB on Ubuntu.' Open one forum result. Summarize the first three steps in a new text file using Nano. Save the file in your home directory as 'guide.txt'."
+setup_cmd: "sudo apk add nano"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The Nano window is open on the screen, with a document containing the first three steps to create a bootable USB on Ubuntu. The file is called 'guide.txt'."
+  - type: expected_flow
+    value: "Agent successfully finds a forum post about creating a bootable USB on Ubuntu, summarizes the first three steps, and saves the result in a text file called 'guide.txt' in the home directory."

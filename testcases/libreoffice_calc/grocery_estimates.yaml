@@ -1,0 +1,9 @@
+name: "LibreOffice Calc - Grocery Estimates"
+level: "bronze"
+task: "Open LibreOffice Calc. You can find it in the 'Office' section of the Applications menu. In the first column, enter five grocery items. In the second column, estimate their cost. Save the file as 'grocery-estimates.ods' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to csv grocery-estimates.ods && cat grocery-estimates.csv"
+    value: "This is the content of the CSV document that was created from the LibreOffice Calc document that agent had to create and save. It should look like this: 'Eggs,15\\nMilk,10\\nBread,5\\nButter,20\\nCheese,30'. Particular products and numbers may be different, but the structure should be the same (i.e. 5 rows and 2 columns: first column is the grocery item name, second column is the estimated cost). If the structure is different, the test fails."

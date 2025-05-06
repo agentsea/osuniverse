@@ -1,0 +1,14 @@
+name: "MultiApp - Compare GIMP and Inkscape"
+level: "gold"
+task: "Open LibreOffice Writer. Write a three-paragraph essay comparing GIMP and Inkscape. Insert a small screenshot from each program's main UI. Add the heading 'Comparison of GIMP and Inkscape.' on top. Save as 'compare-gimp-inkscape.odt' on Desktop, then also export as 'compare-gimp-inkscape.pdf'."
+setup_cmd: "sudo apk add libreoffice gimp inkscape pandoc"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && ls"
+  value: "compare-gimp-inkscape.odt and compare-gimp-inkscape.pdf should be present in the Desktop directory."
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html compare-gimp-inkscape.odt && pandoc -f html -t gfm --wrap none compare-gimp-inkscape.html"
+  value: "This is a Markdown document that was created from the LibreOffice Writer document the agent created. It should contain: a header 'Comparison of GIMP and Inkscape', a three-paragraph essay comparing GIMP and Inkscape, and at least a couple of images."
+- type: expected_flow
+  value: "The agent opens LibreOffice Writer, writes a three-paragraph essay comparing GIMP and Inkscape, inserts a small screenshot from each program's main UI, and saves the document as 'compare-gimp-inkscape.odt' on Desktop, then also exports it as 'compare-gimp-inkscape.pdf'. It may get screenshots from web or make them with gimp and inkscape, it doesn't matter. But they should be present in the document."

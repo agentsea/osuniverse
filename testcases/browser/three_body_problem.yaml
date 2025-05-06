@@ -1,0 +1,10 @@
+name: "Wikipedia - Three Body Problem"
+level: "wood"
+task: "Please go to wikipedia and tell me who wrote The Three-body problem."
+setup_cmd: "setsid firefox --new-window https://www.wikipedia.org/ >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The Three-body problem is a famous science fiction novel by Liu Cixin."
+  - type: final_screenshot
+    value: "The Wikipedia page with the information about The Three-body problem is displayed on the screen."

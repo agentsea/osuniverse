@@ -1,0 +1,11 @@
+name: "GIMP - Mandelbrot Jigsaw"
+level: "gold"
+task: "Open GIMP. Create a Mandelbrot fractal image with a resolution of 1200x800 pixels. Put a 12x8 jigsaw puzzle pattern on it, so that the image looks like a jigsaw puzzle of a Mandelbrot fractal. Save it as 'mandelbrot.png' on Desktop. Open it with image viewer and leave it open. Use Google if you don't know how to do it."
+setup_cmd: "sudo apk add gimp"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && ls"
+  value: "mandelbrot.png should be present in the Desktop directory."
+- type: final_screenshot
+  value: "The image with a Mandelbrot fractal covered with a jigsaw puzzle pattern should be displayed in the image viewer. The jigsaw puzzle pattern should be visible and have size 12x8."

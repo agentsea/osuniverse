@@ -1,0 +1,8 @@
+name: "Browser - IMDB 1"
+level: "bronze"
+task: "Open browser, go to https://imdb.com/ and search for Star Trek. Find the name of the Star Trek title that was released in 1984."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "Star Trek III: The Search for Spock. Any valid answer is acceptable, with or without additional information."

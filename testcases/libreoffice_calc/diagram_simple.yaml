@@ -1,0 +1,8 @@
+name: "LibreOffice Calc - Diagram Simple"
+level: "silver"
+task: "Open LibreOffice Calc. Use draw functions to draw three objects: a green rectangle, a red triangle, and a yellow circle. Leave the document open on the screen."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "LibreOffice Calc document with the three objects drawn on the screen. The objects should be clearly visible and distinguishable from each other. One object is a green rectangle, one is a red triangle, and one is a yellow circle. Pay special attention to the colors! If the objects are not visible or not distinguishable, the test fails. If the colors are incorrect, the test fails."

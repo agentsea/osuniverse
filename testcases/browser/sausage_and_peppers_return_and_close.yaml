@@ -1,0 +1,12 @@
+name: "Browser - Sausage and Peppers Recipe Return and Close"
+level: "silver"
+task: "Open browser. Go to https://duckduckgo.com/ and search for 'sausage and peppers recipe.' Open the first result you find. Read the recipe carefully and return the ingredient list and instructions. Close the browser afterward."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The agent returns the ingredient list and instructions for a sausage and peppers recipe."
+  - type: final_screenshot
+    value: "The browser is closed."
+  - type: expected_flow
+    value: "Agent opens the browser, searches for a sausage and peppers recipe, opens the recipe, and closes the browser."

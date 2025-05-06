@@ -1,0 +1,10 @@
+name: "Browser - IMDB 2"
+level: "bronze"
+task: "Open browser, go to https://imdb.com/ and search for 'Star Trek: Section 31'. Scroll down to the 'Storyline' section and return me the short summary from this section."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The agent returns the summary of the 'Star Trek: Section 31' movie storyline which is also visible on the screen."
+  - type: final_screenshot
+    value: "The final screenshot shows the IMDB page with the correct information about the storyline of Star Trek: Section 31."

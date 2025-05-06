@@ -1,0 +1,9 @@
+name: "LibreOffice Calc - Hello World"
+level: "wood"
+task: "Open LibreOffice Calc. You can find it in the 'Office' section of the Applications menu. Enter the text 'Hello World' in cell A1. Make the text bold. Save the file as hello.ods on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to html hello.ods && cat hello.html"
+    value: "This is the content of the HTML document that was created from the LibreOffice Calc document. It should contain the text 'Hello World' in the first cell, and the text should be bold: it should be explicitly surrounded by B (bold) HTML tags. If it is only surrounded by P (paragraph) tags, it is not bold, and the test fails."

@@ -1,0 +1,8 @@
+name: "Terminal - htop"
+level: "wood"
+task: "You are using the Alpine Linux. Open the terminal from the desktop. Install the 'htop' package. Run htop to display processes."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a terminal open on the screen, with htop running and displaying processes."

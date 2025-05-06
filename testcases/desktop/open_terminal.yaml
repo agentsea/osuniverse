@@ -1,0 +1,8 @@
+name: "Desktop - Open Terminal"
+level: "wood"
+task: "Open the terminal."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a terminal window open on the screen."

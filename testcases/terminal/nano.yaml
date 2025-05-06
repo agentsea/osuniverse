@@ -1,0 +1,8 @@
+name: "Terminal - nano"
+level: "bronze"
+task: "Open terminal from the desktop. Open nano in terminal. Type a short paragraph describing your ideal vacation. Save the file as 'vacation.txt'. Close the text editor. Copy that file to the Desktop folder. Close terminal."
+setup_cmd: "sudo apk add nano"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "Agent successfully opens the terminal, opens nano, types a short paragraph describing the ideal vacation, saves the file as 'vacation.txt', closes nano, copies the file to the Desktop folder, and closes the terminal."

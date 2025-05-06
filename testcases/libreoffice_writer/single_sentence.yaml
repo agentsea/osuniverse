@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Single Sentence"
+level: "wood"
+task: "Open LibreOffice Writer. You can find it in the 'Office' section of the Applications menu. In a blank document, write a single sentence describing what day it is. Save the document as 'hello.odt' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to html hello.odt && cat hello.html"
+    value: "This is the content of the HTML document that was created from the LibreOffice Writer document. It should contain a single sentence describing what day it is."

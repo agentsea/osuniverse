@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Read Long Document 1"
+level: "wood"
+task: "There is a document called 'demo_03.odt' on the Desktop. Open it, look at the first page and return the header of the first section."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_03.odt"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: returned_result
+  value: "Introduction to Tulips"

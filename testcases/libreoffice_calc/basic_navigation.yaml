@@ -1,0 +1,9 @@
+name: "LibreOffice Calc - Basic Navigation"
+level: "bronze"
+task: "Open LibreOffice Calc. You can find it in the 'Office' section of the Applications menu. Enter the following numbers in cells A1, B1, C1: 10, 20, 30. Save the file as 'basic-navigation.ods' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to csv basic-navigation.ods && cat basic-navigation.csv"
+    value: "This is the content of the CSV document that was created from the LibreOffice Calc document that agent had to save. It should look like this: 10,20,30. If there are any other numbers or extra commas, the test fails."

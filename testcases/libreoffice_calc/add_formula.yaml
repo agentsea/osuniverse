@@ -1,0 +1,9 @@
+name: "LibreOffice Calc - Add Formula"
+level: "bronze"
+task: "You see the LibreOffice Calc open on the screen. In the 'Total cost' column, add a formula to calculate the total cost for each product. Save the document using a keyboard shortcut."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.ods && setsid libreoffice --nologo demo_01.ods >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_01.ods && cat demo_01.html"
+    value: "This is the content of the HTML document that was created from the LibreOffice Calc document that agent had to save. The last cells of each row on the first sheet ('Sheet1') should contain the total cost for each product. Each of these cells has to have an attribute 'data-sheets-formula=\"=RC[-2]*RC[-1]\"'. If the formula is incorrect, the test fails. If the values are correct, but the formula is missing, the test fails. The values should be: 25 for Socks, 60 for T-shirt, 15 for Hat, 100 for Jeans, 100 for Jacket."

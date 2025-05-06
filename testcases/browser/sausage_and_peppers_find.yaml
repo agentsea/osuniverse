@@ -1,0 +1,8 @@
+name: "Browser - Sausage and Peppers Recipe Find"
+level: "wood"
+task: "Open browser. Go to https://duckduckgo.com/ and search for 'sausage and peppers recipe.' Open the first result you find. Leave the browser open. The recipe should be clearly visible on the page."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The browser is open and displays a sausage and peppers recipe."

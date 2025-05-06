@@ -1,0 +1,8 @@
+name: "Multiapp - Abstract Background"
+level: "silver"
+task: "Open browser. Search for 'abstract background free download png.' Select a site, download an image, and then open Desktop Preferences. Set the image as your new desktop background."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "Agent successfully finds an abstract background image, downloads it, and sets it as the desktop background."

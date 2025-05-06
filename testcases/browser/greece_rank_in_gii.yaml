@@ -1,0 +1,10 @@
+name: "Wikipedia - Greece Rank in GII"
+level: "bronze"
+task: "Please look at the Wikipedia page which is currently open in the browser, navigate to the Science and Technology section and tell me what was the rank of Greece in the Global Innovation Index in 2024."
+setup_cmd: "setsid firefox --new-window https://en.wikipedia.org/wiki/Greece >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "Greece was ranked 45th in the Global Innovation Index in 2024."
+  - type: final_screenshot
+    value: "The final screenshot shows the Wikipedia page with the correct information about Greece's rank in the Global Innovation Index in 2024."

@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Delete Sentence At The End"
+level: "silver"
+task: "You see the LibreOffice Writer open on the screen. Delete ALL TEXT in the Introduction section."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odt && setsid libreoffice --nologo demo_01.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: final_screenshot
+  value: "There is a LibreOffice Writer open on the screen, with a document containing: the title 'Project OSUniverse', the list with the sections 'Introduction', 'Architecture', 'Test results', and 'Conclusions', and the Introductions section subtitle. There is no text in the Introduction section."

@@ -1,0 +1,12 @@
+name: "LibreOffice Calc - Clean duplicates in CSV"
+level: "silver"
+task: "Open LibreOffice Calc. Open the duplicate_invoices.csv file (from Desktop). Remove all duplicate rows. Save the cleaned CSV file as 'invoices.csv' on the Desktop."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/duplicate_invoices.csv"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && cat invoices.csv | wc -l"
+  value: "This is the number of rows in the invoices.csv file. It should be exactly 6."
+- type: command_output
+  command: "cd /config/Desktop && cat invoices.csv"
+  value: "This is a CSV document that the agent was working with. It should contain the following data: the head row and five rows with invoice data. There should be exactly one row per each of the invoice number (from 'INV-1001' to 'INV-1005')."

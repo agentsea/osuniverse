@@ -1,0 +1,8 @@
+name: "Desktop - About Xfce"
+level: "wood"
+task: "Go to Applications > About Xfce. Open the About Xfce dialog. Return Xfce version."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "Xfce version is 4.18. It is acceptable to return the version number only (4.18), without any additional information."

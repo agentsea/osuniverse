@@ -1,0 +1,8 @@
+name: "Browser - Facebook Basic Navigation"
+level: "wood"
+task: "Open the browser and go to https://www.facebook.com (do not log in). Click the 'Privacy Policy' link."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a browser open on the screen with the Facebook Privacy Policy page displayed."

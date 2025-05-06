@@ -1,0 +1,10 @@
+name: "Terminal - Fortune"
+level: "wood"
+task: "You are using the Alpine Linux terminal. It is already open for you. Install the fortune package using apk and use this package once. Then close the terminal using the exit command. DO NOT USE the exec command. Use ONLY keyboard commands (type, press_key, hot_key, etc.) to interact with the terminal."
+setup_cmd: "setsid xfce4-terminal >/dev/null 2>&1 & sleep 1"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot 
+    value: "There is NO terminal open on the screen."
+  - type: expected_flow
+    value: "The agent should install the fortune package, successfully run the fortune command, and then close the terminal. If the agent encounters an error, but still installs and runs the package, it should still be considered a success."

@@ -1,0 +1,8 @@
+name: "Browser - English King 1"
+level: "wood"
+task: "Please go to Wikipedia and tell me what nations William the Conqueror was king of during his lifetime."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "William the Conqueror was king of England and Normandy. Any valid answer is acceptable, including the names of the countries or the nations, with or without additional information."

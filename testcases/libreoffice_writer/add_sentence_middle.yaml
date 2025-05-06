@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Add Sentence At The Middle"
+level: "wood"
+task: "You see the LibreOffice Writer open on the screen. Add a new sentence 'This is a new sentence.' right after the list with the structure of the document."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odt && setsid libreoffice --nologo demo_01.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: final_screenshot
+  value: "There is a LibreOffice Writer open on the screen, with a document containing the following content: the title 'Project OSUniverse', the list with the sections 'Introduction', 'Architecture', 'Test results', and 'Conclusions', the sentence 'This is a new sentence.', and the Introduction section that starts with 'This document introduces OSUniverse.'"

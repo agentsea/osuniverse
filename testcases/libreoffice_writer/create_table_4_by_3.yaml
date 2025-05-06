@@ -1,0 +1,10 @@
+name: "LibreOffice Writer - Create a Table 4x3"
+level: "gold"
+task: "Open LibreOffice Writer. Create a new document. Create a table with 4 rows and 3 columns. Fill the table with the values 'Spring', 'Warm', '3 months' (first row), 'Summer', 'Hot', '3 months' (second row), 'Autumn', 'Cool', '3 months' (third row), 'Winter', 'Cold', '3 months' (fourth row), left to right, top to bottom. Save the document as 'seasons.odt' on Desktop."
+setup_cmd: "sudo apk add libreoffice pandoc"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html seasons.odt && pandoc -f html -t gfm --wrap none seasons.html"
+  value: "This is a Markdown document that was created from the LibreOffice Writer document. It should contain a small table with 4 rows and 3 columns. The table should look as follows: '|Spring|Warm|3 months|'\\n|Summer|Hot|3 months|'\\n|Autumn|Cool|3 months|'\\n|Winter|Cold|3 months|'. The formatting in the markdown may be slightly different, but the structure and the content should be the same."
+

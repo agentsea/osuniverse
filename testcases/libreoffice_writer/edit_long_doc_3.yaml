@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Edit Long Document 3"
+level: "silver"
+task: "There is a document called 'demo_03.odt' on the Desktop. Open it. Make the text in the first section italic. Do not touch the section header. Save the document as 'demo_03_edited.odt' on Desktop."
+setup_cmd: "sudo apk add libreoffice pandoc && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_03.odt"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_03_edited.odt && pandoc -f html -t markdown --wrap none demo_03_edited.html -o demo_03_edited.md && cd /config/Desktop && libreoffice --headless --convert-to html demo_03.odt && pandoc -f html -t markdown --wrap none demo_03.html -o demo_03.md && diff demo_03.md demo_03_edited.md"
+  value: "This is the diff between the markdown represenations of the original file and the edited file. The diff should indicate that a piece of text chnaged the format; namely, the diff should show that the current document contains the following text: '*Tulips (Tulipa) are one of the most beloved flowers worldwide, admired for their vibrant colors and elegant shape. They belong to the Liliaceae family and are native to Central Asia, though they have found their most famous home in the Netherlands. Tulips are spring-blooming perennials that grow from bulbs and are known for their simple yet striking beauty. Their history, symbolism, and cultural significance make them a fascinating subject of study.*'. Pay special attention to the stars (as they indicate the italic font). Also make sure that this is the only change in the document."

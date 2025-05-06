@@ -1,0 +1,9 @@
+name: "Terminal - Install ImageMagick"
+level: "silver"
+task: "Open Terminal. Install ImageMagick."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "convert -version"
+  value: "This should be the version of ImageMagick that was installed."

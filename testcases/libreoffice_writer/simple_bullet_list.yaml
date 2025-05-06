@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Simple Bullet List"
+level: "wood"
+task: "Open LibreOffice Writer. You can find it in the 'Office' section of the Applications menu. In a blank document, write a list of ten animals. It should be formatted as a bullet (unordered) list. You should use the editor capabilities instead of typing stars or dashes. Save the document as 'animals.odt' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to html animals.odt && cat animals.html"
+    value: "This is the content of the HTML document that was created from the LibreOffice Writer document. It should contain a list of ten animals, formatted as a bullet (unordered) list, which means that each item in the list should be surrounded by LI tags, and the list should be surrounded by UL tags. If each item in the lists starts with a dash or a star, the agent has failed the test."

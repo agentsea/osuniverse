@@ -1,0 +1,8 @@
+name: "Browser - Word Search 3"
+level: "wood"
+task: "Open browser, go to https://duckduckgo.com/ and search for 'LEGO'. Open the first link and leave it on the screen."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The open webpage contains information about the word in the task, and this page is not a list of search results."

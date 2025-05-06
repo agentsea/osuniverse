@@ -1,0 +1,9 @@
+name: "LibreOffice Calc - Delete Sheet"
+level: "wood"
+task: "You see the LibreOffice Calc open on the screen. Delete Sheet2 and save the document using a keyboard shortcut."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.ods && setsid libreoffice --nologo demo_01.ods >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_01.ods && cat demo_01.html"
+    value: "This is the content of the HTML document that was created from the LibreOffice Calc document that agent had to save. This document has to contain one sheet: 'Sheet1'. If there are any other sheets or the sheet names are incorrect, the test fails."

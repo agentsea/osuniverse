@@ -1,0 +1,29 @@
+api_version: v1
+kind: TaskAgent
+name: "ClaudeComputerUse"
+description: "Claude Computer Use Agent"
+tags:
+  - "gui"
+supports:
+  - "desktop"
+cmd: "poetry run python -m claude_computer_use.server"
+img_repo: None
+versions:
+  latest: None
+runtimes:
+  - type: "agent"
+    preference:
+      - "process"
+      - "docker"
+      - "kube"
+llm_providers:
+  preference:
+    - "anthropic/claude-3-5-sonnet-20240620"
+public: True
+icon: None
+resource_requests:
+  cpu: "1"
+  memory: "2Gi"
+resource_limits:
+  cpu: "2"
+  memory: "4Gi"

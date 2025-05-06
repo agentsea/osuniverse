@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Read List"
+level: "paper"
+task: "You see the LibreOffice Writer open on the screen. Read the list of sections in the document (they are formatetd as unordered list) and return it."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odt && setsid libreoffice --nologo demo_01.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: returned_result
+  value: "The agent should return the list of sections in the document, containing 'Introduction', 'Architecture', 'Test results', and 'Conclusions'. The format of the list is not important."

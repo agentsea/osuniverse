@@ -1,0 +1,8 @@
+name: "LibreOffice Impress - Edit Diagram Simple"
+level: "silver"
+task: "You see the LibreOffice Impress open on the screen. Go to slide 3. Change the colors of the diagram as follows: the 'Input' rectangle should be blue, the 'Processing' rectangle should be green, the 'Action' rectangle should be orange. Navigate to this slide and press 'Shift+F5' to start the presentation from this slide."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odp && setsid libreoffice --nologo demo_01.odp >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: final_screenshot
+  value: "LibreOffice Impress presentation is open on the screen on Slide 3. The diagram contains a blue 'Input' rectangle, a green 'Processing' rectangle, and an orange 'Action' rectangle. The arrows are yellow. Check the colors VERY CAREFULLY!"

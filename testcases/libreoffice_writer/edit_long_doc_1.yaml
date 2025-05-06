@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Edit Long Document 1"
+level: "silver"
+task: "There is a document called 'demo_03.odt' on the Desktop. Open it. At the end of the document, add a new section with the header 'Conclusion'. In this section, write a short paragraph about the importance of tulips in the Dutch culture. Save it as 'demo_03_edited.odt' on Desktop."
+setup_cmd: "sudo apk add libreoffice pandoc && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_03.odt"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_03_edited.odt && pandoc -f html -t markdown --wrap none demo_03_edited.html -o demo_03_edited.md && cd /config/Desktop && libreoffice --headless --convert-to html demo_03.odt && pandoc -f html -t markdown --wrap none demo_03.html -o demo_03.md && diff demo_03.md demo_03_edited.md"
+  value: "This is the diff between the markdown represenations of the original file and the edited file. The diff should contain the following: the 'Conclusion' section with a short paragraph about the importance of tulips in the Dutch culture. It may also contain extra lines and page breaks. The change should be located at the end of the document, starting around the line 33 (the number may be slightly different, between 32 and 34)."

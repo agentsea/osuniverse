@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Simple Paragraph Style"
+level: "wood"
+task: "Open LibreOffice Writer. You can find it in the 'Office' section of the Applications menu. In a blank document, write 'Hello World'. Change the paragraph style to 'Title'."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a LibreOffice Writer open on the screen, with a document containing the text 'Hello World' and the paragraph style (in the top left corner of the document tool panel) set to 'Title'. The text should be centered and bold." 

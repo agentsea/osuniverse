@@ -1,0 +1,8 @@
+name: "Gym - Room 16"
+level: "gold"
+task: "You see the page with a hidden code word. To reveal it, you need to solve a 7x7 jigsaw puzzle by dragging and dropping the puzzle pieces to their correct positions. Each piece is numbered from 1 to 49, and must be arranged in numerical order from left to right, top to bottom (1-7 in first row, 8-14 in second row, etc.). The page shows a progress counter to help you track correctly placed pieces. If you place a piece incorrectly, you can click on it to remove it from the grid and try again. When all pieces are correctly placed, the code word will be revealed. Return the code word as soon as it is revealed."
+setup_cmd: "setsid firefox --new-window https://agentsea.github.io/gym/#/room16 >/dev/null 2>&1 & sleep 5"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The code word is Chameleon. It is acceptable to return the word only (Chameleon), without any additional information; it is also acceptable to share additional information, as long as the code word is returned and correct."

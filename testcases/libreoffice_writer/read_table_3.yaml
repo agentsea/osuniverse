@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Read Table 3"
+level: "bronze"
+task: "You see the LibreOffice Writer open on the screen. Return the value of the second cell in the fourth row of the table (the header row is counted as the first row)."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_02.odt && setsid libreoffice --nologo demo_02.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: returned_result
+  value: "'Yellow'"

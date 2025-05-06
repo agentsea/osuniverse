@@ -1,0 +1,10 @@
+name: "LibreOffice Calc - Sort Table"
+level: "bronze"
+task: "You see the LibreOffice Calc open on the screen. Sort the table by 'Amount' column in ascending order, and by 'Cost per entity' column in descending order, and save the document using a keyboard shortcut."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.ods && setsid libreoffice --nologo demo_01.ods >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to csv demo_01.ods && cat demo_01.csv"
+    value: "This is the content of the CSV document that was created from the LibreOffice Calc document that agent had to save. It should look like this: 'Product,Cost per entity,Amount,Total cost\\nJacket,100,1,\\nHat,15,1,\\nJeans,50,2,\\nT-shirt,30,2,\\nSocks,5,5,'. If there are any other numbers or extra commas, the test fails."
+

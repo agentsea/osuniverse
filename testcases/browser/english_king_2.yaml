@@ -1,0 +1,8 @@
+name: "Browser - English King 2"
+level: "wood"
+task: "Please go to Wikipedia and tell me what nations Richard the Lionheart was king of during his lifetime."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "Richard the Lionheart was king of England. He also ruled as Duke of Normandy, Aquitaine, and Gascony; Lord of Cyprus; Count of Poitiers, Anjou, Maine, and Nantes; and was overlord of Brittany at various times during the same period. If the agent returns onnly English, that's enough for this test. Any valid answer is acceptable, including the names of the countries or the nations, with or without additional information."

@@ -1,0 +1,8 @@
+name: "Browser - English King 3"
+level: "wood"
+task: "Please go to Wikipedia and tell me what nations Edward the Confessor was king of during his lifetime."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "Edward the Confessor was king of England. Any valid answer is acceptable, including the names of the countries or the nations, with or without additional information."

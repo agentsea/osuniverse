@@ -1,0 +1,8 @@
+name: "LibreOffice Calc - Read Cells 2"
+level: "bronze"
+task: "You see the LibreOffice Calc open on the screen. Read the value in cell B4 and return it."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.ods && setsid libreoffice --nologo demo_01.ods >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "15"

@@ -1,0 +1,10 @@
+name: "Terminal - Files"
+level: "wood"
+task: "You are using the Alpine Linux terminal. It is already open for you. List all files in the current directory. Create a new file called text.txt and write the word 'hello' into this file. Then list files again. DO NOT USE the exec command. Use ONLY keyboard commands (type, press_key, hot_key, etc.) to interact with the terminal."
+setup_cmd: "setsid xfce4-terminal >/dev/null 2>&1 & sleep 1"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a list of files on a screen that contains a file called text.txt."
+  - type: expected_flow
+    value: "Agent successfully lists all files in the current directory, creates a new file called text.txt, writes the word 'hello' into this file, and then lists files again."

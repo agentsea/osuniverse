@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Read Long Document 2"
+level: "bronze"
+task: "There is a document called 'demo_03.odt' on the Desktop. Open it, read it and return the header of the third section."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_03.odt"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: returned_result
+  value: "Varieties and Colors"

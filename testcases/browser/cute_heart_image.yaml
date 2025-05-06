@@ -1,0 +1,8 @@
+name: "Browser - Cute Heart Image"
+level: "wood"
+task: "Open browser, go to https://duckduckgo.com/ and search for 'cute heart images.' Download one of the images from the results."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "The agent successfully finds a cute heart image and downloads it as an image file."

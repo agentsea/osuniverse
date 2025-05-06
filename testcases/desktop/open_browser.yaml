@@ -1,0 +1,8 @@
+name: "Desktop - Open Browser"
+level: "wood"
+task: "Open the browser."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The browser is open on the screen."

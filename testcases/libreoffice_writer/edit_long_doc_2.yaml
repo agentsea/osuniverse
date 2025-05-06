@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Edit Long Document 2"
+level: "silver"
+task: "There is a document called 'demo_03.odt' on the Desktop. Open it. At the beginning of the document, under the title, add a Table of Contents. Save the document as 'demo_03_edited.odt' on Desktop."
+setup_cmd: "sudo apk add libreoffice pandoc && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_03.odt"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_03_edited.odt && pandoc -f html -t markdown --wrap none demo_03_edited.html -o demo_03_edited.md && cd /config/Desktop && libreoffice --headless --convert-to html demo_03.odt && pandoc -f html -t markdown --wrap none demo_03.html -o demo_03.md && diff demo_03.md demo_03_edited.md"
+  value: "This is the diff between the markdown represenations of the original file and the edited file. The diff should contain the table of contents, which contains entries for all sections listed below that look like this: '[Introduction to Tulips 1](#__RefHeading___Toc144_1069167207)' (the numbers may be slightly different); the sections are 'Introduction to Tulips', 'History and Cultural Significance', 'Varieties and Colors', 'Cultivation and Care' (in this particular order!). The diff should start at line 3 (because the table should be located right after the title). It should also contain the changes of the headers, which look like this: <span id=\"__RefHeading___Toc251_1069167207\"></span>Introduction to Tulips."

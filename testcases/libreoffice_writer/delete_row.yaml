@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Delete Row"
+level: "bronze"
+task: "You see the LibreOffice Writer open on the screen. Delete the row that contains information about 'Sunflower'. Save the document using a keyboard shortcut."
+setup_cmd: "sudo apk add libreoffice pandoc && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_02.odt && setsid libreoffice --nologo demo_02.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_02.odt && pandoc -f html -t gfm --wrap none demo_02.html"
+  value: "This is a Markdown document that was created from the LibreOffice Writer document. It should contain the table with information about flowers. The table should look as follows: '|Flower|Color|Bloom Season|Symbolism|'\\n|Rose|Red|Spring-Summer|Love|\\n|Sakura|Pink|Spring|Renewal|\\n|Tulip|White|Spring|Prosperity|'. The formatting in the markdown may be slightly different, but the structure and the content should be the same."

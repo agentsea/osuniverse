@@ -1,0 +1,12 @@
+name: "MultiApp - Invoices to Calc"
+level: "gold"
+task: "Open LibreOffice Calc. Create a new spreadsheet. Add columns 'Invoice Number', 'Invoice Date', 'Item', 'Quantity', 'Unit Price', 'Total Price'. Add a formula to calculate the 'Total Price' column. Open the synthetic_invoice.pdf file (from Desktop) and copy the invoice data into the spreadsheet (copy data from ALL pages!). At the very end, below all the data, add a row with the total sum of all the 'Total Price' column. Save the spreadsheet as 'invoices.ods' on the Desktop."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/synthetic_invoice.pdf"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to csv invoices.ods && cat invoices.csv | wc -l"
+  value: "This is the number of rows in the invoices.csv file. It should be 21 or 22."
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to csv invoices.ods && cat invoices.csv"
+  value: "This is a CSV document that was created from the invoices.ods file the agent created. It should contain the following columns: 'Invoice Number', 'Invoice Date', 'Item', 'Quantity', 'Unit Price', 'Total Price'. The last row should contain the total sum of all the 'Total Price' column, which should be 39542.63."

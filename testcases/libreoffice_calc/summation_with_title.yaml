@@ -1,0 +1,10 @@
+name: "LibreOffice Calc - Summation with Title"
+level: "bronze"
+task: "Open LibreOffice Calc. You can find it in the 'Office' section of the Applications menu. Enter the following numbers in the first row cells: in A1, write 256; in B1, write 3001; in C1, write 45; in D1, write 22. In E1, use the SUM function to sum values in columns A, B, C, and D together. Cut and paste the entire row down one row. Put a title above the row 2 called 'SUM OF A,B,C AND D' in column A (cell A1). In a cell E1, put the word 'SUM'. Save the file as 'sum-test.ods' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && libreoffice --headless --convert-to csv sum-test.ods && cat sum-test.csv"
+    value: "This is the content of the CSV document that was created from the LibreOffice Calc document that agent had to save. It should look like this: \"SUM OF A,B,C AND D\",,,,\"SUM\"\\n256,3001,45,22,3324. If there are any other numbers or extra commas, the test fails."
+

@@ -1,0 +1,9 @@
+name: "LibreOffice Impress - Create and Save New Deck"
+level: "wood"
+task: "Open LibreOffice Impress. Create a new deck from any template. Save it as 'new_deck.odp' on the Desktop. Also, save it as 'updated_deck.odp' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && ls -l"
+    value: "This is the list of files on the Desktop. It should contain these two files: 'new_deck.odp' and 'updated_deck.odp'."

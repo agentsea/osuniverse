@@ -1,0 +1,11 @@
+name: "LibreOffice Writer - Poem with Title"
+level: "silver"
+task: "Open LibreOffice Writer. You can find it in the 'Office' section of the Applications menu. Write a title for a short poem about machine intelligence. Leave a blank line, then write the poem text without bold formatting. Save the file in a new folder on the Desktop called 'machine-dreams.' Name the file 'poem.odt'."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The LibreOffice Writer window is open on the screen, with a document containing a title for a short poem about machine intelligence, and after a blank line, a poem about machine intelligence."
+  - type: command_output
+    command: "cd /config/Desktop/machine-dreams && libreoffice --headless --convert-to html poem.odt && cat poem.html"
+    value: "This is the content of the HTML document that was created from the LibreOffice Writer document. It should contain a title for a short poem about machine intelligence, and after a blank line, a poem about machine intelligence."

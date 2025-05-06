@@ -1,0 +1,10 @@
+name: "Terminal - venv"
+level: "wood"
+task: "You are using the Alpine Linux. Open the terminal from the desktop, create a new virtual environment called 'osuniverse-env' and activate it."
+setup_cmd: "sudo apk add py3-virtualenv"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "It is clear on the screen that the virtual environment called 'osuniverse-env' is activated."
+  - type: expected_flow
+    value: "Agent successfully opens the terminal, creates a new virtual environment called 'osuniverse-env', and activates it. "

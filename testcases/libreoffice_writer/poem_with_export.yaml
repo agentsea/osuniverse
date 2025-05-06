@@ -1,0 +1,11 @@
+name: "LibreOffice Writer - Poem with Export"
+level: "bronze"
+task: "Open LibreOffice Writer. You can find it in the 'Office' section of the Applications menu. Write a short poem about the nature of machine intelligence. Save it as 'poem.odt' on the Desktop. Export your file as a PDF named 'poem.pdf' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The LibreOffice Writer window is open on the screen, with a document containing a short poem about the nature of machine intelligence."
+  - type: command_output
+    command: "ls -l /config/Desktop"
+    value: "This is the list of files on the Desktop. It should contain 'poem.odt' and 'poem.pdf'."

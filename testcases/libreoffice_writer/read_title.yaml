@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Read Title"
+level: "paper"
+task: "You see the LibreOffice Writer open on the screen. Read the title of the document (not the file name!) and return it."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odt && setsid libreoffice --nologo demo_01.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: returned_result
+  value: "The agent should return the title of the document, which is 'Project OSUniverse'."

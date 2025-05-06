@@ -1,0 +1,10 @@
+name: "Browser - Battle"
+level: "wood"
+task: "Open browser. Navigate to https://www.wikipedia.org. Search for 'The Battle of the Bulge.' Once the correct page is displayed, close browser."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "The agent opens the browser, navigates to wikipedia.org, searches for 'The Battle of the Bulge', and closes the browser. The page that agent found should contain correct information about the battle."
+  - type: final_screenshot
+    value: "There is NO browser open on the screen."

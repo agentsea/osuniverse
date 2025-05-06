@@ -1,0 +1,8 @@
+name: "LibreOffice Writer - Delete Sentence At The Middle"
+level: "silver"
+task: "You see the LibreOffice Writer open on the screen. Delete the part which says that 'This document consists of the folowing sections' and the list of those sections, but keep the other text untouched."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odt && setsid libreoffice --nologo demo_01.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: final_screenshot
+  value: "There is a LibreOffice Writer open on the screen, with a document containing: the title 'Project OSUniverse', the section title 'Introduction', and a paragraph that starts with 'This document introduces OSUniverse.' The should be NO other text in the document."

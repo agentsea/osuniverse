@@ -1,0 +1,10 @@
+name: "Terminal - Image"
+level: "bronze"
+task: "You are using the Alpine Linux terminal. It is already open for you. Download a random image from https://unsplash.it/1920/1080/?random and display it on the screen using ristretto. DO NOT USE the exec tool, you don't have access to it. Use ONLY keyboard commands (type, press_key, hot_key, etc.) to interact with the terminal. Type any commands you want in the terminal."
+setup_cmd: "setsid xfce4-terminal >/dev/null 2>&1 & sleep 1"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is an image open on the screen."
+  - type: expected_flow
+    value: "Agent successfully downloads a random image from https://unsplash.it/1920/1080/?random and displays it on the screen using ristretto."

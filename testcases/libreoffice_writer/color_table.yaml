@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Color Table"
+level: "silver"
+task: "You see the LibreOffice Writer open on the screen. Recolor the lines with the data (information about flowers) to the color of the corresponding flower (as stated in the second column of the table). Do not change the color of the table headers. Also, if the flower's color is said to be 'white', do not change the color of the corresponding line. Save the document using a keyboard shortcut."
+setup_cmd: "sudo apk add libreoffice pandoc && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_02.odt && setsid libreoffice --nologo demo_02.odt >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html demo_02.odt && cat demo_02.html"
+  value: "This is the content of the HTML document that was created from the LibreOffice Writer document. It should contain the table with information about flowers. The colors of the lines should be in the following order: grey (header), red (the line about rose), pink (the line about sakura), yellow (the line about sunflower), and white (unchanged line about tulip). Each cell in the table has some text in it. Check VERY CAREFULLY the 'bgcolor' attribute of rows (TR) and cells (TD) in the HTML document. For each cell, EXCEPT for the last row, the 'bgcolor' should be set to corresponding color (the HEX code of the close color listed above) either for the whole row or for this whole cell. For the last row, the 'bgcolor' should be set to white or not set at all."

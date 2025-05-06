@@ -1,0 +1,8 @@
+name: "Browser - Instagram Basic Navigation"
+level: "wood"
+task: "Open your browser and head to https://www.instagram.com. Click the 'sign up' button. Do NOT log in."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a browser open on the screen with the instagram sign up page displayed."

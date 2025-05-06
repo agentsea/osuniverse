@@ -1,0 +1,9 @@
+name: "LibreOffice Writer - Create a Table 2x2"
+level: "silver"
+task: "Open LibreOffice Writer. Create a new document. Create a table with 2 rows and 2 columns. Fill the table with the values 'A', 'B', 'C', and 'D', left to right, top to bottom. Save the document as 'table.odt' on Desktop."
+setup_cmd: "sudo apk add libreoffice pandoc"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html table.odt && pandoc -f html -t gfm --wrap none table.html"
+  value: "This is a Markdown document that was created from the LibreOffice Writer document. It should contain a small table with 2 rows and 2 columns. The table should look as follows: '|A|B|'\\n|C|D|'. The formatting in the markdown may be slightly different, but the structure and the content should be the same."

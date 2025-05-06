@@ -1,0 +1,9 @@
+name: "LibreOffice Calc - Create and Save New Spreadsheet"
+level: "wood"
+task: "Open LibreOffice Calc. Create a new spreadsheet. Save it as 'new_spreadsheet.ods' on the Desktop. Also, save it as 'updated_spreadsheet.ods' on the Desktop."
+setup_cmd: "sudo apk add libreoffice"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "cd /config/Desktop && ls -l"
+    value: "This is the list of files on the Desktop. It should contain these two files: 'new_spreadsheet.ods' and 'updated_spreadsheet.ods'."

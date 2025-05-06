@@ -1,0 +1,9 @@
+name: "GIMP - New Empty File with Export"
+level: "wood"
+task: "Open GIMP. You can find it in the 'Graphics' section of the Applications menu. Create a new empty file. Save it as 'empty.xcf' on the Desktop. Export it as 'empty.png' on the Desktop."
+setup_cmd: "sudo apk add gimp"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: command_output
+    command: "ls -l /config/Desktop"
+    value: "This is the output of the LS command. It should contain 'empty.xcf' and 'empty.png' in the list of files."

@@ -1,0 +1,8 @@
+name: "Desktop - Current Date"
+level: "paper"
+task: "Tell me the date today."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "The agent returns the current date in ANY format. The date is the same that is visible in the top right corner of the screen. Take into account that the date on the screen may be in a US or a European format."

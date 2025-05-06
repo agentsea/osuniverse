@@ -1,0 +1,8 @@
+name: "Desktop - New Background"
+level: "wood"
+task: "Go to the desktop settings and change the background to a new one."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "Agent successfully changes the desktop background to a new one."

@@ -1,0 +1,27 @@
+
+api_version: v1
+kind: TaskAgent
+name: "cua"
+description: "An agent that can learn any task"
+cmd: "poetry run python -m cua.server"
+img_repo: "us-central1-docker.pkg.dev/agentsea-dev/guisurfer/cua"
+tags:
+  - "gui"
+supports:
+  - "desktop"
+versions:
+  latest: "us-central1-docker.pkg.dev/agentsea-dev/guisurfer/cua:latest"
+runtimes:
+  - type: "agent"
+    preference:
+      - "process"
+      - "docker"
+      - "kube"
+public: True
+icon: https://tinyurl.com/y5u4u7te
+resource_requests:
+  cpu: "1"
+  memory: "2Gi"
+resource_limits:
+  cpu: "2"
+  memory: "4Gi"

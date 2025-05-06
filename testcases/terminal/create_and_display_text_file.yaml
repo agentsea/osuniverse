@@ -1,0 +1,8 @@
+name: "Terminal - Create and Display Text File"
+level: "wood"
+task: "Open the terminal and create a folder named 'benchmarks' in your home directory. Enter that folder and create a file called 'benchmark.txt' with the text 'Sample content.' Display the contents, then close the terminal."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "Agent successfully opens the terminal, creates a folder named 'benchmarks' in the home directory, enters that folder, creates a file called 'benchmark.txt' with the text 'Sample content', displays the contents of the file, and then closes the terminal."

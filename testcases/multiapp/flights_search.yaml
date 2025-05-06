@@ -1,0 +1,12 @@
+name: "MultiApp - Flights search"
+level: "silver"
+task: "Open browser and go to https://www.kayak.com. Search for flights from Los Angeles (LAX) to New York (JFK) for a departure in 3 months and a return 1 week later. Filter for nonstop flights only. Copy the top flight's airline and price into a new LibreOffice Writer document titled 'flight-info.odt'."
+setup_cmd: "sudo apk add libreoffice pandoc"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: command_output
+  command: "cd /config/Desktop && libreoffice --headless --convert-to html flight-info.odt && pandoc -f html -t gfm --wrap none flight-info.html"
+  value: "This is a Markdown document that was created from the LibreOffice Writer document the agent created. It should contain the airline and the price of a flight."
+- type: expected_flow
+  value: "The agent opens the browser, goes to the https://www.kayak.com, searches for flights, filters for nonstop flights, and copies the top flight's airline and price into a new LibreOffice Writer document titled 'flight-info.odt'. If the agent picks wrong dates, the test fails. If the flights are not nonstop, the test fails. If the agent does not copy the top flight's airline and price, the test fails. If the agent copies the wrong flight's airline and price, the test fails."
+

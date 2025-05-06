@@ -1,0 +1,8 @@
+name: "Desktop - Relocate Icons"
+level: "wood"
+task: "Go to the desktop settings, Icons tab, and change the Icon Orientation to Bottom Left Horizontal. Close the dialog."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "The 'Home' and 'File System' icons are in the bottom left corner of the desktop."

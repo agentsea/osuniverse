@@ -1,0 +1,8 @@
+name: "Terminal - Permissions"
+level: "wood"
+task: "Open the terminal from the desktop and type `ls -la`. Identify '.bashrc' file in the listing and tell me its permissions. Then close the terminal."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: expected_flow
+    value: "Agent successfully opens the terminal, identifies '.bashrc' file in the listing, and tells the user its permissions. Then, it closes the terminal."

@@ -1,0 +1,8 @@
+name: "Browser - Google"
+level: "wood"
+task: "Open the browser and go to https://www.google.com"
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: final_screenshot
+    value: "There is a browser open on the screen with the google.com landing page. There may be a cookie consent banner open."

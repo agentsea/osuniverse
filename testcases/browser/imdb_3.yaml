@@ -1,0 +1,8 @@
+name: "Browser - IMDB 3"
+level: "bronze"
+task: "Open browser, go to https://imdb.com/ and search for 'The Truman Show'. Find on this movie page who played 'Meryl Burbank'."
+setup_cmd: None
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+  - type: returned_result
+    value: "Laura Linney. Any valid answer is acceptable, with or without additional information."

@@ -1,0 +1,9 @@
+name: "LibreOffice Impress - Edit Slide 2"
+level: "bronze"
+task: "You see the LibreOffice Impress open on the screen. Go to slide 4. Remove all emojis. Navigate to this slide and press 'Shift+F5' to start the presentation from this slide."
+setup_cmd: "sudo apk add libreoffice && cd /config/Desktop && wget https://raw.githubusercontent.com/mariyadavydova/benchmark_data/main/demo_01.odp && setsid libreoffice --nologo demo_01.odp >/dev/null 2>&1 & sleep 2"
+desktop_image: us-docker.pkg.dev/agentsea-dev/agentd/desktop-webtop:8ed7f4e
+checks:
+- type: final_screenshot
+  value: "LibreOffice Impress presentation is open on the screen on Slide 4. This slide contains a header 'Applications of GUI Agents' and a list with 3 bullet points. The bullet points are: 'Software Testing → Automate UI interactions.', 'Data Entry → Fill out forms automatically.', 'Game Bots → Play games or assist players.'. There are NO emojis on this slide."
+

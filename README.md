@@ -61,6 +61,12 @@ Run the benchmark with the specified parameters with 4 workers:
 python benchmark.py --agent-yaml agents/react/agent.yaml --agent-model gpt-4o --results-dir results/run-001 --categories desktop,terminal --levels paper,wood --max-steps 10,30 --runners 4
 ```
 
+View the results (you can run this command as soon as the benchmark is started and observe the progress as the tests are being run):
+
+```bash
+streamlit run viewer.py -- --dir ./results/run-001
+```
+
 * To continue the benchmark from the previous run, run the same command: only tests that were not run before will be run.
 * To rerun the failed tests, use `--mode rerun-failed` flag.
 * To validate the test cases without running them (given that the test cases were already run), use `--mode validate-only` flag.

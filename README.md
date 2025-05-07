@@ -27,6 +27,13 @@ Task-oriented OS-based benchmark for vision-based desktop-oriented GUI-navigatio
 
 ## Quickstart
 
+Clone the repository:
+
+```bash
+git clone https://github.com/agentsea/osuniverse.git
+cd osuniverse
+```
+
 Export keys:
 
 ```bash

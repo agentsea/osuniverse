@@ -1,8 +1,8 @@
 [tool.poetry]
 name = "osuniverse"
-version = "0.1.0"
+version = "1.0.0"
 description = "Task-oriented OS-based benchmark for vision-based GUI-nav agents"
-authors = ["Kentauros AI <partnerships@kentauros.ai>"]
+authors = ["Kentauros AI <research@kentauros.ai>"]
 license = "MIT"
 readme = "README.md"
 

@@ -4,7 +4,7 @@ Task-oriented OS-based benchmark for vision-based desktop-oriented GUI-navigatio
 
 <p align="center">
   <a href="https://agentsea.github.io/osuniverse/">Website</a> •
-  <a href="#">Paper</a> •
+  <a href="https://arxiv.org/abs/2505.03570">Paper</a> •
   <a href="https://discord.gg/hhaq7XYPS6">Discord</a>
 </p>
 
@@ -19,7 +19,7 @@ Task-oriented OS-based benchmark for vision-based desktop-oriented GUI-navigatio
 
 ## Updates
 
-* TBA
+* May 6, 2025: Our paper is [published on arXiv](https://arxiv.org/abs/2505.03570).
 
 ## Prerequisites
 
@@ -152,5 +152,13 @@ If you use this workaround, please don't forget to clean up the stuck surfkit de
 If you use OSUniverse in your research, please cite our paper:
 
 ```
-TBA
+@misc{davydova2025osuniversebenchmarkmultimodalguinavigation,
+      title={OSUniverse: Benchmark for Multimodal GUI-navigation AI Agents}, 
+      author={Mariya Davydova and Daniel Jeffries and Patrick Barker and Arturo Márquez Flores and Sinéad Ryan},
+      year={2025},
+      eprint={2505.03570},
+      archivePrefix={arXiv},
+      primaryClass={cs.AI},
+      url={https://arxiv.org/abs/2505.03570}, 
+}
 ```

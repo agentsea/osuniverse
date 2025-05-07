@@ -284,24 +284,14 @@
       <h2 class="title is-3 has-text-centered">Core Features</h2>
       <div class="content has-text-justified">
         <ul>
-          <li>
-            <b>Multimodality</b>: designed to rely on vision only, without any extra knowledge about the environment.
-          </li>
-          <li>
-            <b>Diversity</b>: contains 160 tasks across 5 levels of complexity and 9 categories; all tasks are carefully crafted to be challenging and representative of real-world scenarios.
-          </li>
-          <li>
-            <b>Automated validation</b>: includes a Gemini-powered validator with an average error rate less than 2%; we support 4 types of validations in each test case: validating the textual output of the agent, the final screenshot of the desktop, the agent trajectory, and the output of the arbitrary bash command after the agent has finished the task.
-          </li>
-          <li>
-            <b>Resource-efficient</b>: the Desktops are lightweight and run in Docker containers, so you can run them on your local machine.
-          </li>
-          <li>
-            <b>Extensibility</b>: each test case is a separate YAML configuration file. 
-          </li>
-          <li>
-            <b>Flexibility</b>: you can add new agents, runtimes, and validators. 
-          </li>
+          <li><b>Multimodality:</b> designed to rely on vision only, without any extra knowledge about the environment.</li>
+          <li><b>Diversity:</b> contains 160 tasks across 5 levels of complexity and 9 categories; all tasks are carefully crafted to be challenging and representative of real-world scenarios that are easy for the average office worker but hard for machines.</li>
+          <li><b>Automated validation:</b> includes a Gemini-powered validator with an average error rate less than 2%; we support 4 types of validations in each test case: validating the textual output of the agent, the final screenshot of the desktop, the agent trajectory, and the output of the arbitrary bash command after the agent has finished the task.</li>
+          <li><b>Non-deterministic:</b> many scenarios cannot be tested with simple heuristics, like whether an agent effectively drew a smiley face or a flower in GIMP so we leverage our automatic Gemini validation for more complex scenarios.</li>
+          <li><b>Easily extensible:</b> every test is configured via YAML.</li>
+          <li><b>Agent architecture independent:</b> ReACT-style agents are the most popular agent architecture, but there are many more, and researchers should be free to implement any architecture they can dream up.</li>
+          <li><b>Flexibility:</b> you can create <a href="https://github.com/agentsea/osuniverse/blob/main/docs/AGENTS.md">custom agents</a>, <a href="https://github.com/agentsea/osuniverse/blob/main/docs/RUNNERS.md">custom runners</a>, and validators.</li>
+          <li><b>Escalating complexity:</b> tasks are grouped; they advance from <b>paper level tasks</b> where the agent just has to see the screen and accurately describe it, all the way to <b>gold level tasks</b>, complex multi-app scenarios that test everything from the ability to draw, to dragging and dropping, to distilling information from one app and inputting it into another.</li>
         </ul>
       </div>
     </div>
@@ -433,15 +423,14 @@
     <div class="container is-max-desktop content">
       <h2 class="title is-3 has-text-centered">BibTeX</h2>
       <pre><code>@misc{davydova2025osuniversebenchmarkmultimodalguinavigation,
-        title={OSUniverse: Benchmark for Multimodal GUI-navigation AI Agents}, 
-        author={Mariya Davydova and Daniel Jeffries and Patrick Barker and Arturo Márquez Flores and Sinéad Ryan},
-        year={2025},
-        eprint={2505.03570},
-        archivePrefix={arXiv},
-        primaryClass={cs.AI},
-        url={https://arxiv.org/abs/2505.03570}, 
-  }
-  </code></pre>
+    title={OSUniverse: Benchmark for Multimodal GUI-navigation AI Agents}, 
+    author={Mariya Davydova and Daniel Jeffries and Patrick Barker and Arturo Márquez Flores and Sinéad Ryan},
+    year={2025},
+    eprint={2505.03570},
+    archivePrefix={arXiv},
+    primaryClass={cs.AI},
+    url={https://arxiv.org/abs/2505.03570}, 
+}</code></pre>
     </div>
   </section>
 
